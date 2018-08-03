@@ -38,17 +38,29 @@ public class Main extends ListenerAdapter {
         else if (message.equals("$shutdown"))
             event.getChannel().sendMessage("no u").queue();
         else if (message.substring(0, 5).equals("$echo"))
-            event.getChannel().sendMessage(message.substring(6)).queue();
+            echo(event);
         else if (message.equals("$cradily"))
             event.getChannel().sendMessage("fuck off").queue();
         else if (message.equals("$whiscash"))
             event.getChannel().sendMessage(":yum:").queue();
     }
 
+    private void echo(MessageReceivedEvent event) {
+        String message = event.getMessage().getContentRaw();
+
+        if (message.substring(6, 8).equals("-h")) {
+            event.getMessage().delete().queue();
+            event.getChannel().sendMessage(message.substring(9)).queue();
+        } else
+            event.getChannel().sendMessage(message.substring(6)).queue();
+    }
+
     private void help(MessageReceivedEvent event) {
         event.getChannel().sendMessage("```\n" +
                                             "Command List\n" +
                                             "$help - Display this list\n" +
+                                            "$echo - Echo the user's input\n" +
+                                            "\t(Optional parameter -h deletes original command)\n" +
                                             "$shutdown - Shutdown this bot\n" +
                                             "```").queue();
 
