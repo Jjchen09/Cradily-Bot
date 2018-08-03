@@ -12,15 +12,19 @@ public class Main extends ListenerAdapter {
 
     public static void main(String[] args) throws LoginException, FileNotFoundException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-        builder.setToken(importToken());
+        builder.setToken(System.getenv("HuskyDiscordToken"));
+        System.out.println(System.getenv("HuskyDiscordToken"));
         builder.addEventListener(new Main());
         builder.buildAsync();
     }
 
+    //Old Token System
+    /*
     public static String importToken() throws FileNotFoundException {
         Scanner inputToken = new Scanner(new File("TOKEN"));
         return inputToken.nextLine();
     }
+    */
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
