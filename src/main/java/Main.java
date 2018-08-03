@@ -43,6 +43,10 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage("fuck off").queue();
         else if (message.equals("$whiscash"))
             event.getChannel().sendMessage(":yum:").queue();
+        else if (message.equals("$dogmeat"))
+            event.getChannel().sendMessage("Nooo pls don't aboose me I'm coot doggo :frowning:").queue();
+        else if (message.equals("$evilpenguin"))
+            event.getChannel().sendMessage("Get your stinky feet off of me!").queue();
     }
 
     private void echo(MessageReceivedEvent event) {
