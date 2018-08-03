@@ -10,10 +10,9 @@ import javax.security.auth.login.LoginException;
 
 public class Main extends ListenerAdapter {
 
-    public static void main(String[] args) throws LoginException, FileNotFoundException {
+    public static void main(String[] args) throws LoginException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
         builder.setToken(System.getenv("HuskyDiscordToken"));
-        System.out.println(System.getenv("HuskyDiscordToken"));
         builder.addEventListener(new Main());
         builder.buildAsync();
     }
