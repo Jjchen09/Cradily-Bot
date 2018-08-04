@@ -81,7 +81,7 @@ public class Main extends ListenerAdapter {
         int i = 1;
         while(i < 40) //supposed to be i > 0
         {
-            String temp;
+            String temp = "";
             if(i%4 == 1)
                 temp = ".";
             else if(i%4 == 2)
