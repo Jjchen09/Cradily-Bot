@@ -49,7 +49,9 @@ public class Main extends ListenerAdapter {
         else if (message.equals("$dogmeat"))
             event.getChannel().sendMessage("Nooo pls don't aboose me I'm coot doggo :frowning:").queue();
         else if (message.equals("$evilpenguin"))
-            event.getChannel().sendMessage("Get your stinky feet off of me!").queue(); //
+            event.getChannel().sendMessage("Get your stinky feet off of me!").queue();
+        else if (message.equals("$mashedpotatoes"))
+            mash(event);            
         else if (message.equals("p!info cradily"))
             event.getChannel().sendMessage("gay").queue();
     }
@@ -73,6 +75,24 @@ public class Main extends ListenerAdapter {
                                             "$shutdown - Shutdown this bot\n" +
                                             "```").queue();
 
+    }
+    private void mash(MessageReceivedEvent event)
+    {
+        int i = 1;
+        while(i < 40) //supposed to be i > 0
+        {
+            String temp;
+            if(i%4 == 1)
+                temp = ".";
+            else if(i%4 == 2)
+                temp = "..";
+            else if(i%4 == 3)
+                temp = "...";
+            else if(i%4 == 0)
+                temp = "..";
+            event.getChannel().sendMessage("Mashing Potatoes" + temp + "\n").queue(); //preferable have bot delete the
+            i++;                                                                      //previous message it sent
+        }                                                                             //so makes cool loading thing
     }
 
 }
