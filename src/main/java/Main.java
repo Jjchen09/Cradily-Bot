@@ -10,17 +10,20 @@ import javax.security.auth.login.LoginException;
 
 public class Main extends ListenerAdapter {
 
-    public static void main(String[] args) throws LoginException, FileNotFoundException {
+    public static void main(String[] args) throws LoginException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-        builder.setToken(importToken());
+        builder.setToken(System.getenv("HuskyDiscordToken"));
         builder.addEventListener(new Main());
         builder.buildAsync();
     }
 
+    //Old Token System
+    /*
     public static String importToken() throws FileNotFoundException {
         Scanner inputToken = new Scanner(new File("TOKEN"));
         return inputToken.nextLine();
     }
+    */
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
@@ -48,7 +51,9 @@ public class Main extends ListenerAdapter {
         else if (message.equals("$evilpenguin"))
             event.getChannel().sendMessage("Get your stinky feet off of me!").queue();
         else if (message.equals("$mashedpotatoes"))
-            mash(event);
+            mash(event);            
+        else if (message.equals("p!info cradily"))
+            event.getChannel().sendMessage("gay").queue();
     }
 
     private void echo(MessageReceivedEvent event) {

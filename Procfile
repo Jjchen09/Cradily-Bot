@@ -1,0 +1,1 @@
+worker: java -jar build/libs/HuskyBot-1.0-SNAPSHOT-all.jar
