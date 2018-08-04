@@ -78,21 +78,26 @@ public class Main extends ListenerAdapter {
     }
     private void mash(MessageReceivedEvent event)
     {
-        int i = 1;
+        int i = 0;
+        String temp = "";
+        event.getChannel().sendMessage("Mashing Potatoes" + temp + "\n").queue();
         while(i < 40) //supposed to be i > 0
         {
-            String temp = "";
-            if(i%4 == 1)
+            i++;
+            if(i%6 == 1)
                 temp = ".";
-            else if(i%4 == 2)
+            else if(i%6 == 2)
                 temp = "..";
-            else if(i%4 == 3)
+            else if(i%6 == 3)
                 temp = "...";
-            else if(i%4 == 0)
+            else if(i%6 == 4)
                 temp = "..";
-            event.getChannel().sendMessage("Mashing Potatoes" + temp + "\n").queue(); //preferable have bot delete the
-            i++;                                                                      //previous message it sent
-        }                                                                             //so makes cool loading thing
+            else if(i%6 == 5)
+                temp = ".";
+            else if(i%6 == 0)
+                temp = "";
+            event.getChannel().sendMessage("Mashing Potatoes" + temp + "\n").queue();
+        }                                                                             
     }
 
 }
