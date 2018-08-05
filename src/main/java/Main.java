@@ -88,7 +88,7 @@ public class Main extends ListenerAdapter {
                 temp = ".";
             else if(i%6 == 0)
                 temp = "";
-            event.getMessage().editMessage("Mashing Potatoes" + temp);
+            event.getMessage().editMessage("Mashing Potatoes" + temp).queue();
         }
     }
 
