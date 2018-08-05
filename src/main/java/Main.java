@@ -44,7 +44,7 @@ public class Main extends ListenerAdapter {
         else if (message.substring(0, 7).equals("$expand"))
             expand(event, message.substring(8));
         else if (message.substring(0, 6).equals("$ascii"))
-            event.getChannel().sendMessage("```\n" + ASCIIDL.ASCII(message, false) + "\n```").queue();
+            event.getChannel().sendMessage("```\n" + ASCIIDL.ASCII(message.substring(7), false) + "\n```").queue();
     }
 
     private void help(MessageReceivedEvent event) {
