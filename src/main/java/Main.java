@@ -2,10 +2,6 @@ import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-
-import java.io.File;
-import java.util.Scanner;
-import java.io.FileNotFoundException;
 import javax.security.auth.login.LoginException;
 
 public class Main extends ListenerAdapter {
@@ -27,14 +23,10 @@ public class Main extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        //Disabled for entertainment purposes
-        /*
-        if (event.getAuthor().isBot())
-            return;
-        */
-
         String message = event.getMessage().getContentRaw();
-        if (message.equals("$ping"))
+        if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
+            mash(event);
+        else if (message.equals("$ping"))
             event.getChannel().sendMessage("I've got better things to do than answer your stupid pings").queue();
         else if (message.equals("$help"))
             help(event);
@@ -51,7 +43,7 @@ public class Main extends ListenerAdapter {
         else if (message.equals("$evilpenguin"))
             event.getChannel().sendMessage("Get your stinky feet off of me!").queue();
         else if (message.equals("$mashedpotatoes"))
-            mash(event);            
+            event.getChannel().sendMessage("Mashing Potatoes").queue();
         else if (message.equals("p!info cradily"))
             event.getChannel().sendMessage("gay").queue();
     }
@@ -76,11 +68,11 @@ public class Main extends ListenerAdapter {
                                             "```").queue();
 
     }
+
     private void mash(MessageReceivedEvent event)
     {
         int i = 0;
         String temp = "";
-        event.getChannel().sendMessage("Mashing Potatoes" + temp + "\n").queue();
         while(i < 40) //supposed to be i > 0
         {
             i++;
@@ -96,8 +88,8 @@ public class Main extends ListenerAdapter {
                 temp = ".";
             else if(i%6 == 0)
                 temp = "";
-            event.getChannel().sendMessage("Mashing Potatoes" + temp + "\n").queue();
-        }                                                                             
+            event.getMessage().editMessage("Mashing Potatoes" + temp);
+        }
     }
 
 }
