@@ -56,6 +56,8 @@ public class Main extends ListenerAdapter {
                                             "\t(Optional parameter -h deletes original command)\n" +
                                             "$8ball - Magic 8Ball\n" +
                                             "$ascii - Display the message as ASCII art\n" +
+                                            "$gaydar - Self-explanatory\n" +
+                                            "$expand - E x p a n d s input\n" +
                                             "$shutdown - Shutdown this bot\n" +
                                             "```").queue();
 
@@ -124,36 +126,39 @@ public class Main extends ListenerAdapter {
         {
             if((int)c == 32)
                 continue;
+            if(c >= 'A' && c <= 'Z')
+                c = (char)((int)c + 32);
             temp += (int)c*31;
             temp = (temp*temp)%139;
         }
         //optionally implement randomness
         return temp;
     }
-
     private void gaydar(MessageReceivedEvent event, String question)
     {
         int ran = hasher(question);
         String response = "";
-        if(ran > 119)
-            response = "100% gay";
-        else if(ran > 99)
-            response = "No gay found";
-        else if(ran > 79)
-            response = "A slight whiff of rainbow dust";
-        else if(ran > 59)
-            response = "As straight as a rainbow";
-        else if(ran > 39)
-            response = "Error: Gayness overflow";
-        else if(ran == 6)
+        if(ran == 112 || 57)
             response = "PotatoCurry x Cradily";
-        else if(ran > 19)
+        else if(ran == 99)
+            { echo(event); gaydar(event,question);}
+        else if(ran > 120)
+            response = "100% gay";
+        else if(ran > 100)
+            response = "No gay found";
+        else if(ran > 80)
+            response = "A slight whiff of rainbow dust";
+        else if(ran > 60)
+            response = "As straight as a rainbow";
+        else if(ran > 40)
+            response = "Error: Gayness overflow";
+        else if(ran > 20)
             response = "75% gay";
         else if(ran > 0)
             response = "Too lonely to be gay :sob:";
         event.getChannel().sendMessage("How gay is " + question + "?\n" +
                                        ":satellite: " + response + " :gay_pride_flag:").queue();
-    }
+}
 
     private void expand(MessageReceivedEvent event, String str)
     {
