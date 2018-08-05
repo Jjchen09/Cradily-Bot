@@ -3,6 +3,7 @@ import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import javax.security.auth.login.LoginException;
+import java.util.Math;
 
 public class Main extends ListenerAdapter {
 
@@ -46,6 +47,8 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage("Mashing Potatoes").queue();
         else if (message.equals("p!info cradily"))
             event.getChannel().sendMessage("gay").queue();
+        else if (message.substring(0, 6).equals("$8ball"))
+            shake(event, message.substring(7));
     }
 
     private void echo(MessageReceivedEvent event) {
@@ -65,6 +68,7 @@ public class Main extends ListenerAdapter {
                                             "$echo - Echo the user's input\n" +
                                             "\t(Optional parameter -h deletes original command)\n" +
                                             "$shutdown - Shutdown this bot\n" +
+                                            "$8ball - Magic 8Ball\n" +
                                             "```").queue();
 
     }
@@ -90,6 +94,42 @@ public class Main extends ListenerAdapter {
                 temp = "";
             event.getMessage().editMessage("Mashing Potatoes" + temp).queue();
         }
+    }
+    private void shake(MessageReceivedEvent event, String question)
+    {
+        int ran = (int) (Math.random()*48);
+        if(ran%8 == 0)
+            event.getChannel().sendMessage("To your question: " + question + "\n" +
+                                           ":crystal_ball: The All-Seeing Hooski says: " + 
+                                           "Yes, definitely.").queue();
+        else if(ran%8 == 1)
+            event.getChannel().sendMessage("To your question: " + question + "\n" +
+                                           ":crystal_ball: The All-Seeing Hooski says: " +
+                                           "There is a slight possibility.").queue();
+        else if(ran%8 == 2)
+            event.getChannel().sendMessage("To your question: " + question + "\n" +
+                                           ":crystal_ball: The All-Seeing Hooski says: " +
+                                           "Impossible!").queue();
+        else if(ran%8 == 3)
+            event.getChannel().sendMessage("To your question: " + question + "\n" +
+                                           ":crystal_ball: The All-Seeing Hooski says: " +
+                                           "Reply hazy. Feed me and try again.").queue();
+        else if(ran%8 == 4)
+            event.getChannel().sendMessage("To your question: " + question + "\n" +
+                                           ":crystal_ball: The All-Seeing Hooski says: " +
+                                           "There is a spectre haunting Europe, the spectre of communism...").queue();
+        else if(ran%8 == 5)
+            event.getChannel().sendMessage("To your question: " + question + "\n" +
+                                           ":crystal_ball: The All-Seeing Hooski says: " +
+                                           "You're too dumb to understand my answers.").queue();
+        else if(ran%8 == 6)
+            event.getChannel().sendMessage("To your question: " + question + "\n" +
+                                           ":crystal_ball: The All-Seeing Hooski says: " +
+                                           "Very likely.").queue();
+        else if(ran%8 == 7)
+            event.getChannel().sendMessage("To your question: " + question + "\n" +
+                                           ":crystal_ball: The All-Seeing Hooski says: " +
+                                           "Your answers are here: 1-800-273-8255.").queue();
     }
 
 }
