@@ -14,14 +14,6 @@ public class Main extends ListenerAdapter {
         builder.buildAsync();
     }
 
-    //Old Token System
-    /*
-    public static String importToken() throws FileNotFoundException {
-        Scanner inputToken = new Scanner(new File("TOKEN"));
-        return inputToken.nextLine();
-    }
-    */
-
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         String message = event.getMessage().getContentRaw();
