@@ -19,7 +19,7 @@ public class Main extends ListenerAdapter {
         if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
             mash(event);
         else if (message.equals("$ping"))
-            event.getChannel().sendMessage("I've got better things to do than answer your stupid pings").queue();
+            event.getChannel().sendMessage("pong").queue();
         else if (message.equals("$help"))
             help(event);
         else if (message.equals("$shutdown"))
@@ -36,10 +36,21 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage("Get your stinky feet off of me!").queue();
         else if (message.equals("$mashedpotatoes"))
             event.getChannel().sendMessage("Mashing Potatoes").queue();
-        else if (message.equals("p!info cradily"))
-            event.getChannel().sendMessage("gay").queue();
         else if (message.substring(0, 6).equals("$8ball"))
             shake(event, message.substring(7));
+    }
+
+    private void help(MessageReceivedEvent event) {
+        event.getChannel().sendMessage("```\n" +
+                                            "Command List\n" +
+                                            "$help - Display this list\n" +
+                                            "$ping - Ping the bot\n" +
+                                            "$echo - Echo the user's input\n" +
+                                            "\t(Optional parameter -h deletes original command)\n" +
+                                            "$shutdown - Shutdown this bot\n" +
+                                            "$8ball - Magic 8Ball\n" +
+                                            "```").queue();
+
     }
 
     private void echo(MessageReceivedEvent event) {
@@ -50,18 +61,6 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage(message.substring(9)).queue();
         } else
             event.getChannel().sendMessage(message.substring(6)).queue();
-    }
-
-    private void help(MessageReceivedEvent event) {
-        event.getChannel().sendMessage("```\n" +
-                                            "Command List\n" +
-                                            "$help - Display this list\n" +
-                                            "$echo - Echo the user's input\n" +
-                                            "\t(Optional parameter -h deletes original command)\n" +
-                                            "$shutdown - Shutdown this bot\n" +
-                                            "$8ball - Magic 8Ball\n" +
-                                            "```").queue();
-
     }
 
     private void mash(MessageReceivedEvent event)
