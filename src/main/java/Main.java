@@ -10,7 +10,7 @@ public class Main extends ListenerAdapter {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
         builder.setToken(System.getenv("HuskyDiscordToken"));
         builder.addEventListener(new Main());
-        builder.buildAsync();
+        builder.build();
     }
 
     @Override
