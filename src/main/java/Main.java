@@ -3,6 +3,7 @@ import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import javax.security.auth.login.LoginException;
+import MethodsDL.ASCIIDL;
 
 public class Main extends ListenerAdapter {
 
@@ -42,6 +43,8 @@ public class Main extends ListenerAdapter {
             gaydar(event, message.substring(8));
         else if (message.substring(0, 7).equals("$expand"))
             expand(event, message.substring(8));
+        else if (message.substring(0, 6).equals("$ascii"))
+            event.getChannel().sendMessage(ASCIIDL.ASCII(message, false)).queue();
     }
 
     private void help(MessageReceivedEvent event) {
@@ -51,8 +54,9 @@ public class Main extends ListenerAdapter {
                                             "$ping - Ping the bot\n" +
                                             "$echo - Echo the user's input\n" +
                                             "\t(Optional parameter -h deletes original command)\n" +
-                                            "$shutdown - Shutdown this bot\n" +
                                             "$8ball - Magic 8Ball\n" +
+                                            "$ascii - Display the message as ASCII art\n" +
+                                            "$shutdown - Shutdown this bot\n" +
                                             "```").queue();
 
     }
@@ -112,6 +116,7 @@ public class Main extends ListenerAdapter {
         event.getChannel().sendMessage("To your question: " + question + "\n" +
                                        ":crystal_ball: The All-Seeing Hooski says: " + response).queue();
     }
+
     private int hasher(String str)
     {
         int temp = 0;
@@ -125,6 +130,7 @@ public class Main extends ListenerAdapter {
         //optionally implement randomness
         return temp;
     }
+
     private void gaydar(MessageReceivedEvent event, String question)
     {
         int ran = hasher(question);
@@ -148,6 +154,7 @@ public class Main extends ListenerAdapter {
         event.getChannel().sendMessage("How gay is " + question + "?\n" +
                                        ":satellite: " + response + " :gay_pride_flag:").queue();
     }
+
     private void expand(MessageReceivedEvent event, String str)
     {
         String response = "";
