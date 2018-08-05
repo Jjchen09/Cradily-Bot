@@ -40,6 +40,8 @@ public class Main extends ListenerAdapter {
             shake(event, message.substring(7));
         else if (message.substring(0, 7).equals("$gaydar"))
             gaydar(event, message.substring(8));
+        else if (message.substring(0, 7).equals("$expand"))
+            expand(event, message.substring(8));
     }
 
     private void help(MessageReceivedEvent event) {
@@ -115,6 +117,8 @@ public class Main extends ListenerAdapter {
         int temp = 0;
         for(char c: str.toCharArray())
         {
+            if((int)c == 32)
+                continue;
             temp += (int)c*31;
             temp = (temp*temp)%139;
         }
@@ -143,6 +147,15 @@ public class Main extends ListenerAdapter {
             response = "Too lonely to be gay :sob:";
         event.getChannel().sendMessage("How gay is " + question + "?\n" +
                                        ":satellite: " + response + " :gay_pride_flag:").queue();
+    }
+    private void expand(MessageReceivedEvent event, String str)
+    {
+        String response = "";
+        for(char c: str.toCharArray())
+        {
+            response = response + c + " ";
+        }
+        event.getChannel().sendMessage(response).queue();
     }
 
 }
