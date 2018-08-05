@@ -38,6 +38,8 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage("Mashing Potatoes").queue();
         else if (message.substring(0, 6).equals("$8ball"))
             shake(event, message.substring(7));
+        else if (message.substring(0, 7).equals("$gaydar"))
+            gaydar(event, message.substring(8));
     }
 
     private void help(MessageReceivedEvent event) {
@@ -88,38 +90,59 @@ public class Main extends ListenerAdapter {
     private void shake(MessageReceivedEvent event, String question)
     {
         int ran = (int) (Math.random()*48);
+        String response = "";
         if(ran%8 == 0)
-            event.getChannel().sendMessage("To your question: " + question + "\n" +
-                                           ":crystal_ball: The All-Seeing Hooski says: " + 
-                                           "Yes, definitely.").queue();
+            response = "Yes, definitely.";
         else if(ran%8 == 1)
-            event.getChannel().sendMessage("To your question: " + question + "\n" +
-                                           ":crystal_ball: The All-Seeing Hooski says: " +
-                                           "There is a slight possibility.").queue();
+            response = "There is a slight possibility.";
         else if(ran%8 == 2)
-            event.getChannel().sendMessage("To your question: " + question + "\n" +
-                                           ":crystal_ball: The All-Seeing Hooski says: " +
-                                           "Impossible!").queue();
+            response = "Impossible!";
         else if(ran%8 == 3)
-            event.getChannel().sendMessage("To your question: " + question + "\n" +
-                                           ":crystal_ball: The All-Seeing Hooski says: " +
-                                           "Reply hazy. Feed me and try again.").queue();
+            response = "Reply hazy. Feed me and try again.";
         else if(ran%8 == 4)
-            event.getChannel().sendMessage("To your question: " + question + "\n" +
-                                           ":crystal_ball: The All-Seeing Hooski says: " +
-                                           "There is a spectre haunting Europe, the spectre of communism...").queue();
+            response = "I'd say true.";
         else if(ran%8 == 5)
-            event.getChannel().sendMessage("To your question: " + question + "\n" +
-                                           ":crystal_ball: The All-Seeing Hooski says: " +
-                                           "You're too dumb to understand my answers.").queue();
+            response = "Doubt it.";
         else if(ran%8 == 6)
-            event.getChannel().sendMessage("To your question: " + question + "\n" +
-                                           ":crystal_ball: The All-Seeing Hooski says: " +
-                                           "Very likely.").queue();
+            response = "Very likely.";
         else if(ran%8 == 7)
-            event.getChannel().sendMessage("To your question: " + question + "\n" +
-                                           ":crystal_ball: The All-Seeing Hooski says: " +
-                                           "Your answers are here: 1-800-273-8255.").queue();
+            response = "Your answers are here: 1-800-273-8255.";
+        event.getChannel().sendMessage("To your question: " + question + "\n" +
+                                       ":crystal_ball: The All-Seeing Hooski says: " + response).queue();
+    }
+    private int hasher(String str)
+    {
+        int temp = 0;
+        for(char c: str.toCharArray())
+        {
+            temp += (int)c*31;
+            temp = (temp*temp)%139;
+        }
+        //optionally implement randomness
+        return temp;
+    }
+    private void gaydar(MessageReceivedEvent event, String question)
+    {
+        int ran = hasher(question);
+        String response = "";
+        if(ran > 119)
+            response = "100% gay";
+        else if(ran > 99)
+            response = "No gay found";
+        else if(ran > 79)
+            response = "A slight whiff of rainbow dust";
+        else if(ran > 59)
+            response = "As straight as a rainbow";
+        else if(ran > 39)
+            response = "Error: Gayness overflow";
+        else if(ran == 6)
+            response = "PotatoCurry x Cradily";
+        else if(ran > 19)
+            response = "75% gay";
+        else if(ran > 0)
+            response = "Too lonely to be gay :sob:";
+        event.getChannel().sendMessage("How gay is " + question + "?\n" +
+                                       ":satellite: " + response + " :gay_pride_flag:").queue();
     }
 
 }
