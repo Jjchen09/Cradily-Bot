@@ -19,46 +19,46 @@ public class Main extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
         if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
             mash(event);
-        else if (message.equals("$ping"))
+        else if (message.equals("c!ping"))
             event.getChannel().sendMessage("pong").queue();
-        else if (message.equals("$help"))
+        else if (message.equals("c!help"))
             help(event);
-        else if (message.equals("$shutdown"))
+        else if (message.equals("c!shutdown"))
             event.getChannel().sendMessage("no u").queue();
-        else if (message.substring(0, 5).equals("$echo"))
+        else if (message.substring(0, 5).equals("c!echo"))
             echo(event);
-        else if (message.equals("$cradily"))
+        else if (message.equals("c!cradily"))
             event.getChannel().sendMessage("fuck off").queue();
-        else if (message.equals("$whiscash"))
+        else if (message.equals("c!whiscash"))
             event.getChannel().sendMessage(":yum:").queue();
-        else if (message.equals("$dogmeat"))
+        else if (message.equals("c!dogmeat"))
             event.getChannel().sendMessage("Nooo pls don't aboose me I'm coot doggo :frowning:").queue();
-        else if (message.equals("$evilpenguin"))
+        else if (message.equals("c!evilpenguin"))
             event.getChannel().sendMessage("Get your stinky feet off of me!").queue();
-        else if (message.equals("$mashedpotatoes"))
+        else if (message.equals("c!mashedpotatoes"))
             event.getChannel().sendMessage("Mashing Potatoes").queue();
-        else if (message.substring(0, 6).equals("$8ball"))
+        else if (message.substring(0, 6).equals("c!8ball"))
             shake(event, message.substring(7));
-        else if (message.substring(0, 7).equals("$gaydar"))
+        else if (message.substring(0, 7).equals("c!gaydar"))
             gaydar(event, message.substring(8));
-        else if (message.substring(0, 7).equals("$expand"))
+        else if (message.substring(0, 7).equals("c!expand"))
             expand(event, message.substring(8));
-        else if (message.substring(0, 6).equals("$ascii"))
+        else if (message.substring(0, 6).equals("c!ascii"))
             event.getChannel().sendMessage("```\n" + ASCIIDL.ASCII(message.substring(7), false) + "\n```").queue();
     }
 
     private void help(MessageReceivedEvent event) {
         event.getChannel().sendMessage("```\n" +
                                             "Command List\n" +
-                                            "$help - Display this list\n" +
-                                            "$ping - Ping the bot\n" +
-                                            "$echo - Echo the user's input\n" +
+                                            "c!help - Display this list\n" +
+                                            "c!ping - Ping the bot\n" +
+                                            "c!echo - Echo the user's input\n" +
                                             "\t(Optional parameter -h deletes original command)\n" +
-                                            "$8ball - Magic 8Ball\n" +
-                                            "$ascii - Display the message as ASCII art\n" +
-                                            "$gaydar - Self-explanatory\n" +
-                                            "$expand - E x p a n d s input\n" +
-                                            "$shutdown - Shutdown this bot\n" +
+                                            "c!8ball - Magic 8Ball\n" +
+                                            "c!ascii - Display the message as ASCII art\n" +
+                                            "c!gaydar - Self-explanatory\n" +
+                                            "c!expand - E x p a n d s input\n" +
+                                            "c!shutdown - Shutdown this bot\n" +
                                             "```").queue();
 
     }
