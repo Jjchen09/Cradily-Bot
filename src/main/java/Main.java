@@ -138,7 +138,7 @@ public class Main extends ListenerAdapter {
     {
         int ran = hasher(question);
         String response = "";
-        if(ran == 112 || 57)
+        if(ran == 112 || ran == 57)
             response = "PotatoCurry x Cradily";
         else if(ran == 99)
             { echo(event); gaydar(event,question);}
