@@ -4,4 +4,4 @@ A simple Discord bot for use among my friends
 
 [Click here](https://discordapp.com/oauth2/authorize?&client_id=475785719403642882&scope=bot&permissions=0) to add this bot to your server
 
-![Husky](icon.jpg)
+![Cradily Image](cradily.png)
