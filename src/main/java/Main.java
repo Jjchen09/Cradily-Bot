@@ -141,7 +141,7 @@ public class Main extends ListenerAdapter {
         if(ran == 112 || ran == 57)
             response = "PotatoCurry x Cradily";
         else if(ran == 99)
-            { echo(event); gaydar(event,question);}
+            response = event.getMessage().getAuthor().getName() + " is quite gay";
         else if(ran > 120)
             response = "100% gay";
         else if(ran > 100)
