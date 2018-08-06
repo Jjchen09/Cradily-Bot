@@ -154,7 +154,7 @@ public class Main extends ListenerAdapter {
             response = "Error: Gayness overflow";
         else if(ran > 20)
             response = "75% gay";
-        else if(ran > 0)
+        else
             response = "Too lonely to be gay :sob:";
         event.getChannel().sendMessage("How gay is " + question + "?\n" +
                                        ":satellite: " + response + " :gay_pride_flag:").queue();
