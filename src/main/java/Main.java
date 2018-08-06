@@ -9,7 +9,7 @@ public class Main extends ListenerAdapter {
 
     public static void main(String[] args) throws LoginException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-        builder.setToken(System.getenv("HuskyDiscordToken"));
+        builder.setToken(System.getenv("CradilyDiscordToken"));
         builder.addEventListener(new Main());
         builder.build();
     }
