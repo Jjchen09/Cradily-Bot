@@ -7,6 +7,8 @@ import MethodsDL.ASCIIDL;
 
 public class Main extends ListenerAdapter {
 
+    Map mocked = new HashMap();
+    
     public static void main(String[] args) throws LoginException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
         builder.setToken(System.getenv("CradilyDiscordToken"));
@@ -19,7 +21,9 @@ public class Main extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
 //         if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
 //             mash(event);
-        if (event.getMember().getUser().getId().equals("245007207102545921"))
+        if(mocked.containsKey(event.getAuthor()) && mocked.get(event.getAuthor()))
+            event.getChannel().sendMessage(message).queue();
+        else if (event.getMember().getUser().getId().equals("245007207102545921"))
             event.getChannel().sendMessage(message).queue();
         else if (message.equals("c!ping"))
             event.getChannel().sendMessage("pong").queue();
@@ -49,6 +53,10 @@ public class Main extends ListenerAdapter {
             expand(event, message.substring(9));
         else if (message.substring(0, 7).equals("c!ascii"))
             event.getChannel().sendMessage("```\n" + ASCIIDL.ASCII(message.substring(8), false) + "\n```").queue();
+        else if (message.startsWith("c!mock"))
+            mock(event);
+        else if (message.startsWith("c!unmock"))
+            unmock(event);
     }
 
     private void help(MessageReceivedEvent event) {
@@ -63,6 +71,8 @@ public class Main extends ListenerAdapter {
                                             "c!gaydar - Self-explanatory\n" +
                                             "c!expand - E x p a n d s input\n" +
                                             "c!whoami - Returns the author\n" +
+                                            "c!mock <users> - Enable mocking of users\n" +
+                                            "c!unmock <users> - Disables mocking (Need role *Cradily Master*\n" +
                                             "c!shutdown - Shutdown this bot\n" +
                                             "```").queue();
 
@@ -173,6 +183,33 @@ public class Main extends ListenerAdapter {
             response = response + c + " ";
         }
         event.getChannel().sendMessage(response).queue();
+    }
+    private bool hasRole(User usr, String role)
+    {
+        for(Role r: usr.getRoles())
+            if(r.getName().equals(role))
+                return true;
+        return false;
+    }
+    private void mock(MessageReceivedEvent event)
+    {
+        Message msg = event.getMessage();
+        for(User usr: msg.getMentionedUsers())
+        {
+            mocked.put(usr,true);
+            event.getChannel().sendMessage("Cradily shall now mock <@" + usr.getId + ">").queue();
+        }
+    }
+    private void unmock(MessageReceivedEvent event)
+    {
+        if(hasRole(event.getAuthor(),"Cradily Master") == false)
+        {
+            event.getChannel().sendMessage("You need the role *Cradily Master* to do this action!").queue();
+            return;
+        }
+        Message msg = event.getMessage();
+        for(User usr: msg.getMentionedUsers())
+            mocked.put(usr,false);
     }
 
 }
