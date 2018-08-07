@@ -20,6 +20,8 @@ public class Main extends ListenerAdapter {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
         builder.setToken(System.getenv("CradilyDiscordToken"));
         builder.addEventListener(new Main());
+        Game game = Game.playing("with Damian");
+        builder.setGame(game);
         builder.build();
     }
 
