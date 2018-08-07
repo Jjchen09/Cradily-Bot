@@ -30,8 +30,8 @@ public class Main extends ListenerAdapter {
 //             mash(event);
         if(mocked.containsKey(event.getAuthor()) && mocked.get(event.getAuthor()) == true)
             event.getChannel().sendMessage(message).queue();
-        else if (event.getMember().getUser().getId().equals("245007207102545921"))
-            event.getChannel().sendMessage(message).queue();
+//         else if (event.getMember().getUser().getId().equals("245007207102545921"))
+//             event.getChannel().sendMessage(message).queue();
         else if (message.equals("c!ping"))
             event.getChannel().sendMessage("pong").queue();
         else if (message.equals("c!help"))
@@ -64,6 +64,8 @@ public class Main extends ListenerAdapter {
             mock(event);
         else if (message.startsWith("c!unmock"))
             unmock(event);
+        else if (message.equals("c!myroles"))
+            myroles(event);
     }
 
     private void help(MessageReceivedEvent event) {
@@ -217,6 +219,11 @@ public class Main extends ListenerAdapter {
         Message msg = event.getMessage();
         for(User usr: msg.getMentionedUsers())
             mocked.put(usr,false);
+    }
+    private void myroles(MessageReceivedEvent event)
+    {
+        for(Role r: event.getMember().getRoles())
+            event.getChannel().sendMessage("Roles: " + r.getName()).queue();
     }
 
 }
