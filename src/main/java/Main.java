@@ -250,9 +250,9 @@ public class Main extends ListenerAdapter {
         {
             int ran = (int) Math.random()*2;
             if(ran == 0 && c >= 'a' && c <= 'z')
-                result += ((String)c).toUpperCase();
+                result += Character.toUpperCase(c);
             else if(ran == 1 && c >= 'A' && c <= 'Z')
-                result += ((String)c).toLowerCase();
+                result += Character.toLowerCase(c);
         }
         event.getChannel().sendMessage(result).queue();
     }
