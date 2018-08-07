@@ -28,7 +28,7 @@ public class Main extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
 //         if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
 //             mash(event);
-        if(mocked.containsKey(event.getAuthor()) && mocked.get(event.getAuthor()))
+        if(mocked.containsKey(event.getAuthor()) && mocked.get(event.getAuthor()) == true)
             event.getChannel().sendMessage(message).queue();
         else if (event.getMember().getUser().getId().equals("245007207102545921"))
             event.getChannel().sendMessage(message).queue();
@@ -191,7 +191,7 @@ public class Main extends ListenerAdapter {
         }
         event.getChannel().sendMessage(response).queue();
     }
-    private bool hasRole(User usr, String role)
+    private boolean hasRole(User usr, String role)
     {
         for(Role r: usr.getRoles())
             if(r.getName().equals(role))
@@ -204,7 +204,7 @@ public class Main extends ListenerAdapter {
         for(User usr: msg.getMentionedUsers())
         {
             mocked.put(usr,true);
-            event.getChannel().sendMessage("Cradily shall now mock <@" + usr.getId + ">").queue();
+            event.getChannel().sendMessage("Cradily shall now mock <@" + usr.getId() + ">").queue();
         }
     }
     private void unmock(MessageReceivedEvent event)
