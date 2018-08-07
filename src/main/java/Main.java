@@ -19,7 +19,7 @@ public class Main extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
 //         if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
 //             mash(event);
-        if (event.getAuthor().getName().equals("Celtuce") || event.getAuthor().getName().equals("Potato Curry"))
+        if (event.getAuthor().getName().equals("Potato Curry"))
             event.getChannel().sendMessage(message).queue();
         else if (message.equals("c!ping"))
             event.getChannel().sendMessage("pong").queue();
