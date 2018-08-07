@@ -27,7 +27,7 @@ public class Main extends ListenerAdapter {
             help(event);
         else if (message.equals("c!shutdown"))
             event.getChannel().sendMessage("no u").queue();
-        else if (message.substring(0, 5).equals("c!echo"))
+        else if (message.substring(0, 6).equals("c!echo"))
             echo(event);
         else if (message.equals("c!cradily"))
             event.getChannel().sendMessage("fuck off").queue();
@@ -39,14 +39,14 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage("Get your stinky feet off of me!").queue();
 //         else if (message.equals("c!mashedpotatoes"))
 //             event.getChannel().sendMessage("Mashing Potatoes").queue();
-        else if (message.substring(0, 6).equals("c!8ball"))
-            shake(event, message.substring(7));
-        else if (message.substring(0, 7).equals("c!gaydar"))
-            gaydar(event, message.substring(8));
-        else if (message.substring(0, 7).equals("c!expand"))
-            expand(event, message.substring(8));
-        else if (message.substring(0, 6).equals("c!ascii"))
-            event.getChannel().sendMessage("```\n" + ASCIIDL.ASCII(message.substring(7), false) + "\n```").queue();
+        else if (message.substring(0, 7).equals("c!8ball"))
+            shake(event, message.substring(8));
+        else if (message.substring(0, 8).equals("c!gaydar"))
+            gaydar(event, message.substring(9));
+        else if (message.substring(0, 8).equals("c!expand"))
+            expand(event, message.substring(9));
+        else if (message.substring(0, 7).equals("c!ascii"))
+            event.getChannel().sendMessage("```\n" + ASCIIDL.ASCII(message.substring(8), false) + "\n```").queue();
     }
 
     private void help(MessageReceivedEvent event) {
@@ -68,11 +68,11 @@ public class Main extends ListenerAdapter {
     private void echo(MessageReceivedEvent event) {
         String message = event.getMessage().getContentRaw();
 
-        if (message.substring(6, 8).equals("-h")) {
+        if (message.substring(7, 9).equals("-h")) {
             event.getMessage().delete().queue();
-            event.getChannel().sendMessage(message.substring(9)).queue();
+            event.getChannel().sendMessage(message.substring(10)).queue();
         } else
-            event.getChannel().sendMessage(message.substring(6)).queue();
+            event.getChannel().sendMessage(message.substring(7)).queue();
     }
 
 //     private void mash(MessageReceivedEvent event)
