@@ -31,7 +31,8 @@ public class Main extends ListenerAdapter {
 //         if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
 //             mash(event);
         if(!event.getAuthor().getId().equals("475785719403642882") && !message.startsWith("c!") && mocked.containsKey(event.getAuthor()) && mocked.get(event.getAuthor()) == true)
-            event.getChannel().sendMessage(message).queue();
+//             event.getChannel().sendMessage(message).queue();
+               rancap(event,message);
         else if (message.equals("c!ping"))
             event.getChannel().sendMessage("pong").queue();
         else if (message.equals("c!help"))
@@ -66,6 +67,8 @@ public class Main extends ListenerAdapter {
             unmock(event);
         else if (message.equals("c!myroles"))
             myroles(event);
+        else if (message.startsWith("c!rancap"))
+            rancap(event,message.substring(9));
     }
 
     private void help(MessageReceivedEvent event) {
@@ -82,6 +85,8 @@ public class Main extends ListenerAdapter {
                                             "c!whoami - Returns the author\n" +
                                             "c!mock <users> - Enable mocking of users\n" +
                                             "c!unmock <users> - Disables mocking (Requires role Cradily Master)\n" +
+                                            "c!myroles - Displays your roles\n" +
+                                            "c!rancap - rAndOmLy cApiTaLizEs yOuR mEsSagE\n" +
                                             "c!shutdown - Shutdown this bot\n" +
                                             "```").queue();
 
@@ -237,6 +242,19 @@ public class Main extends ListenerAdapter {
     {
         for(Role r: event.getMember().getRoles())
             event.getChannel().sendMessage("Roles: " + r.getName()).queue();
+    }
+    private void rancap(MessageReceivedEvent event, String msg)
+    {
+        String result = "";
+        for(char c: msg)
+        {
+            int ran = (int) Math.random()*2;
+            if(ran == 0 && c >= 'a' && c <= 'z')
+                result += c.toUpperCase();
+            else if(ran == 1 && c >= 'A' && c <= 'Z')
+                result += c.toLowerCase();
+        }
+        event.getChannel().sendMessage(result).queue();
     }
 
 }
