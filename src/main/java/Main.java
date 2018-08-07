@@ -208,8 +208,11 @@ public class Main extends ListenerAdapter {
                 event.getChannel().sendMessage("I won't mock myself!").queue();
                 continue;
             }
-            mocked.put(usr,true);
-            event.getChannel().sendMessage("Cradily shall now mock <@" + usr.getId() + ">").queue();
+            else
+            {
+                mocked.put(usr,true);
+                event.getChannel().sendMessage("Cradily shall now mock <@" + usr.getId() + ">").queue();
+            }
         }
     }
     private void unmock(MessageReceivedEvent event)
