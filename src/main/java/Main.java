@@ -246,13 +246,12 @@ public class Main extends ListenerAdapter {
     private void rancap(MessageReceivedEvent event, String msg)
     {
         String result = "";
+        msg = msg.toLowerCase();
         for(char c: msg.toCharArray())
         {
-            int ran = (int) Math.random()*2;
-            if(ran == 0 && c >= 'a' && c <= 'z')
+            int ran = (int) Math.random()*50+1;
+            if(ran%2 == 0 && c >= 'a' && c <= 'z')
                 result += Character.toUpperCase(c);
-            else if(ran == 1 && c >= 'A' && c <= 'Z')
-                result += Character.toLowerCase(c);
         }
         event.getChannel().sendMessage(result).queue();
     }
