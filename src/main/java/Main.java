@@ -254,6 +254,8 @@ public class Main extends ListenerAdapter {
                 result += Character.toUpperCase(c);
             else if(ran%2 == 1 && c >= 'A' && c <= 'Z')
                 result += Character.toLowerCase(c);
+            else
+                result += c;
         }
         event.getChannel().sendMessage(result).queue();
     }
