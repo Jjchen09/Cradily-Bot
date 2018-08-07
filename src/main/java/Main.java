@@ -37,6 +37,8 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage("Nooo pls don't aboose me I'm coot doggo :frowning:").queue();
         else if (message.equals("c!evilpenguin"))
             event.getChannel().sendMessage("Get your stinky feet off of me!").queue();
+        else if (message.equals("c!whoami"))
+            event.getChannel().sendMessage("I'm " + event.getAuthor()).queue();
 //         else if (message.equals("c!mashedpotatoes"))
 //             event.getChannel().sendMessage("Mashing Potatoes").queue();
         else if (message.substring(0, 7).equals("c!8ball"))
@@ -60,6 +62,7 @@ public class Main extends ListenerAdapter {
                                             "c!ascii - Display the message as ASCII art\n" +
                                             "c!gaydar - Self-explanatory\n" +
                                             "c!expand - E x p a n d s input\n" +
+                                            "c!whoami - Returns the author\n" +
                                             "c!shutdown - Shutdown this bot\n" +
                                             "```").queue();
 
