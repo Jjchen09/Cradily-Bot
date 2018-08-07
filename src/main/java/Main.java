@@ -14,7 +14,7 @@ import java.util.*;
 
 public class Main extends ListenerAdapter {
 
-    Map<User,boolean> mocked = new HashMap<User,boolean>();
+    Map<User,Boolean> mocked = new HashMap<User,Boolean>();
     
     public static void main(String[] args) throws LoginException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
