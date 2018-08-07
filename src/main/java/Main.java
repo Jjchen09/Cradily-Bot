@@ -208,6 +208,11 @@ public class Main extends ListenerAdapter {
                 event.getChannel().sendMessage("I won't mock myself!").queue();
                 continue;
             }
+            if(usr.isBot())
+            {
+                event.getChannel().sendMessage("I don't mock inferior bots!").queue();
+                continue;
+            }
             else
             {
                 mocked.put(usr,true);
