@@ -246,7 +246,7 @@ public class Main extends ListenerAdapter {
     private void rancap(MessageReceivedEvent event, String msg)
     {
         String result = "";
-        for(char c: msg.toStringArray())
+        for(char c: msg.toCharArray())
         {
             int ran = (int) Math.random()*2;
             if(ran == 0 && c >= 'a' && c <= 'z')
