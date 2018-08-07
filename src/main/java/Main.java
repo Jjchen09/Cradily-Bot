@@ -203,6 +203,11 @@ public class Main extends ListenerAdapter {
         Message msg = event.getMessage();
         for(User usr: msg.getMentionedUsers())
         {
+            if(usr.getId() == "475785719403642882")
+            {
+                event.getChannel().sendMessage("I won't mock myself!").queue();
+                continue;
+            }
             mocked.put(usr,true);
             event.getChannel().sendMessage("Cradily shall now mock <@" + usr.getId() + ">").queue();
         }
