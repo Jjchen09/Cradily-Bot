@@ -28,7 +28,7 @@ public class Main extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
 //         if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
 //             mash(event);
-        if(!event.getAuthor().getId().equals("475785719403642882") && mocked.containsKey(event.getAuthor()) && mocked.get(event.getAuthor()) == true)
+        if(!event.getAuthor().getId().equals("475785719403642882") && !message.startsWith("c!") && mocked.containsKey(event.getAuthor()) && mocked.get(event.getAuthor()) == true)
             event.getChannel().sendMessage(message).queue();
         else if (message.equals("c!ping"))
             event.getChannel().sendMessage("pong").queue();
