@@ -17,8 +17,10 @@ public class Main extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         String message = event.getMessage().getContentRaw();
-        if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
-            mash(event);
+//         if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
+//             mash(event);
+        if (event.getAuthor().getName().equals("Celtuce") || event.getAuthor().getName().equals("Potato Curry"))
+            event.getChannel().sendMessage(message).queue();
         else if (message.equals("c!ping"))
             event.getChannel().sendMessage("pong").queue();
         else if (message.equals("c!help"))
@@ -35,8 +37,8 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage("Nooo pls don't aboose me I'm coot doggo :frowning:").queue();
         else if (message.equals("c!evilpenguin"))
             event.getChannel().sendMessage("Get your stinky feet off of me!").queue();
-        else if (message.equals("c!mashedpotatoes"))
-            event.getChannel().sendMessage("Mashing Potatoes").queue();
+//         else if (message.equals("c!mashedpotatoes"))
+//             event.getChannel().sendMessage("Mashing Potatoes").queue();
         else if (message.substring(0, 6).equals("c!8ball"))
             shake(event, message.substring(7));
         else if (message.substring(0, 7).equals("c!gaydar"))
@@ -73,28 +75,28 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage(message.substring(6)).queue();
     }
 
-    private void mash(MessageReceivedEvent event)
-    {
-        int i = 0;
-        String temp = "";
-        while(i < 40) //supposed to be i > 0
-        {
-            i++;
-            if(i%6 == 1)
-                temp = ".";
-            else if(i%6 == 2)
-                temp = "..";
-            else if(i%6 == 3)
-                temp = "...";
-            else if(i%6 == 4)
-                temp = "..";
-            else if(i%6 == 5)
-                temp = ".";
-            else if(i%6 == 0)
-                temp = "";
-            event.getMessage().editMessage("Mashing Potatoes" + temp).queue();
-        }
-    }
+//     private void mash(MessageReceivedEvent event)
+//     {
+//         int i = 0;
+//         String temp = "";
+//         while(i < 40) //supposed to be i > 0
+//         {
+//             i++;
+//             if(i%6 == 1)
+//                 temp = ".";
+//             else if(i%6 == 2)
+//                 temp = "..";
+//             else if(i%6 == 3)
+//                 temp = "...";
+//             else if(i%6 == 4)
+//                 temp = "..";
+//             else if(i%6 == 5)
+//                 temp = ".";
+//             else if(i%6 == 0)
+//                 temp = "";
+//             event.getMessage().editMessage("Mashing Potatoes" + temp).queue();
+//         }
+//     }
     private void shake(MessageReceivedEvent event, String question)
     {
         int ran = (int) (Math.random()*48);
