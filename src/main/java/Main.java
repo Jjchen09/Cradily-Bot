@@ -14,7 +14,7 @@ import java.util.*;
 
 public class Main extends ListenerAdapter {
 
-    Map mocked = new HashMap();
+    Map<User,boolean> mocked = new HashMap<User,boolean>();
     
     public static void main(String[] args) throws LoginException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
@@ -191,9 +191,9 @@ public class Main extends ListenerAdapter {
         }
         event.getChannel().sendMessage(response).queue();
     }
-    private boolean hasRole(User usr, String role)
+    private boolean hasRole(Member mbr, String role)
     {
-        for(Role r: usr.getRoles())
+        for(Role r: mbr.getRoles())
             if(r.getName().equals(role))
                 return true;
         return false;
@@ -209,7 +209,7 @@ public class Main extends ListenerAdapter {
     }
     private void unmock(MessageReceivedEvent event)
     {
-        if(hasRole(event.getAuthor(),"Cradily Master") == false)
+        if(hasRole(event.getMember(),"Cradily Master") == false)
         {
             event.getChannel().sendMessage("You need the role *Cradily Master* to do this action!").queue();
             return;
