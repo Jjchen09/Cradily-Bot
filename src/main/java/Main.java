@@ -38,7 +38,7 @@ public class Main extends ListenerAdapter {
         else if (message.equals("c!evilpenguin"))
             event.getChannel().sendMessage("Get your stinky feet off of me!").queue();
         else if (message.equals("c!whoami"))
-            event.getChannel().sendMessage("I'm " + event.getMember().getUser().getID()).queue();
+            event.getChannel().sendMessage("I'm " + event.getMember().getUser().getId()).queue();
 //         else if (message.equals("c!mashedpotatoes"))
 //             event.getChannel().sendMessage("Mashing Potatoes").queue();
         else if (message.substring(0, 7).equals("c!8ball"))
