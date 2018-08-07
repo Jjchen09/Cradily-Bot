@@ -79,7 +79,7 @@ public class Main extends ListenerAdapter {
                                             "c!expand - E x p a n d s input\n" +
                                             "c!whoami - Returns the author\n" +
                                             "c!mock <users> - Enable mocking of users\n" +
-                                            "c!unmock <users> - Disables mocking (Need role *Cradily Master*\n" +
+                                            "c!unmock <users> - Disables mocking (Requires role Cradily Master)\n" +
                                             "c!shutdown - Shutdown this bot\n" +
                                             "```").queue();
 
@@ -203,7 +203,7 @@ public class Main extends ListenerAdapter {
         Message msg = event.getMessage();
         for(User usr: msg.getMentionedUsers())
         {
-            if(usr.getId() == "475785719403642882")
+            if(usr.getId().equals("475785719403642882"))
             {
                 event.getChannel().sendMessage("I won't mock myself!").queue();
                 continue;
