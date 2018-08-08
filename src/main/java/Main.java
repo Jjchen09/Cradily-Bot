@@ -258,7 +258,7 @@ public class Main extends ListenerAdapter {
                 result += c;
         }
         if(!event.getMessage().getContentRaw().startsWith("c!"))
-            result += " :thnking: :frowning: ";
+            result += " <:thnking:475792129583742986>";
         event.getChannel().sendMessage(result).queue();
     }
 
