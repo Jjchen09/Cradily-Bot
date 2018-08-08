@@ -258,7 +258,7 @@ public class Main extends ListenerAdapter {
                 result += c;
         }
         if(!event.getMessage().getContentRaw().startsWith("c!"))
-            result += ":thnking:";
+            result += " :thnking: ";
         event.getChannel().sendMessage(result).queue();
     }
 
