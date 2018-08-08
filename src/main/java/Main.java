@@ -96,7 +96,7 @@ public class Main extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
 
         if (message.substring(7, 9).equals("-h")) {
-//             event.getMessage().delete().queue();
+            event.getMessage().delete().queue();
             event.getChannel().sendMessage(message.substring(10)).queue();
         } else
             event.getChannel().sendMessage(message.substring(7)).queue();
