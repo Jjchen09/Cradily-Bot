@@ -96,7 +96,7 @@ public class Main extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
 
         if (message.substring(7, 9).equals("-h")) {
-            event.getMessage().delete().queue();
+//             event.getMessage().delete().queue();
             event.getChannel().sendMessage(message.substring(10)).queue();
         } else
             event.getChannel().sendMessage(message.substring(7)).queue();
@@ -236,7 +236,10 @@ public class Main extends ListenerAdapter {
         }
         Message msg = event.getMessage();
         for(User usr: msg.getMentionedUsers())
+        {
             mocked.put(usr,false);
+            event.getChannel().sendMessage("Lucky <@" + usr.getId() + ">, you're now spared from Cradily's mockery").queue();
+        }
     }
     private void myroles(MessageReceivedEvent event)
     {
