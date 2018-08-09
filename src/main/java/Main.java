@@ -97,7 +97,7 @@ public class Main extends ListenerAdapter {
 
         if (message.substring(7, 9).equals("-h")) {
             event.getMessage().delete().queue();
-            event.getChannel().sendMessage(message.substring(10)).queue();
+            rancap(event,message.substring(10));
         } else
             event.getChannel().sendMessage(message.substring(7)).queue();
     }
@@ -260,8 +260,8 @@ public class Main extends ListenerAdapter {
             else
                 result += c;
         }
-        if(!event.getMessage().getContentRaw().startsWith("c!"))
-            result += " <:thnking:475792129583742986>";
+//         if(!event.getMessage().getContentRaw().startsWith("c!"))
+        result += " <:thnking:475792129583742986>";
         event.getChannel().sendMessage(result).queue();
     }
 
