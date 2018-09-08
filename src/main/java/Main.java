@@ -15,6 +15,7 @@ import java.util.*;
 public class Main extends ListenerAdapter {
 
     Map<User,Boolean> mocked = new HashMap<User,Boolean>();
+    Map<User,Boolean> catban = new HashMap<User,Boolean>();
     
     public static void main(String[] args) throws LoginException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
@@ -69,6 +70,16 @@ public class Main extends ListenerAdapter {
             myroles(event);
         else if (message.startsWith("c!rancap"))
             rancap(event,message.substring(9));
+        else if (message.startsWith("c!servercat") || message.startsWith("c!sc"))
+            viewcat(event);
+        else if (message.startsWith("c!feedcat"))
+            feedcat(event,message.substring(10));
+        else if (message.startsWith("c!molest"))
+            molest(event);
+        else if (message.startsWith("c!petcat"))
+            petcat(event);
+        else if (message.startsWith("c!unmolest"))
+            unmolest(event);
     }
 
     private void help(MessageReceivedEvent event) {
@@ -87,6 +98,10 @@ public class Main extends ListenerAdapter {
                                             "c!unmock <users> - Disables mocking (Requires role Cradily Master)\n" +
                                             "c!myroles - Displays your roles\n" +
                                             "c!rancap - rAndOmLy cApiTaLizEs yOuR mEsSagE\n" +
+                                            "c!servercat / c!sc - View servercat (coot)\n" +
+                                            "c!feedcat <food>- Feeds servercat\n" +
+                                            "c!molest - Molests servercat\n" +
+                                            "c!petcat - Pets servercat\n" +
                                             "c!shutdown - Shutdown this bot\n" +
                                             "```").queue();
 
@@ -263,6 +278,40 @@ public class Main extends ListenerAdapter {
 //         if(!event.getMessage().getContentRaw().startsWith("c!"))
         result += " <:thnking:475792129583742986>";
         event.getChannel().sendMessage(result).queue();
+    }
+    private void viewcat(MessageReceivedEvent event)
+    {
+        event.getChannel().sendMessage("how to send pictures D:").queue();
+        event.getChannel().sendMessage("adding happiness bar later").queue();
+        event.getChannel().sendMessage("adding hungry bar later").queue();
+    }
+    private void feedcat (MessageReceivedEvent event, String msg)
+    {
+        if(catban.containsKey(event.getAuthor()) && catban.get(event.getAuthor()) == true)
+            event.getChannel().sendMessage("Registered cat molesters are not allowed to feed servercat :rage:").queue();
+        int ran = (int) (Math.random()*50+1);
+        if(ran%3 == 0)
+            event.getChannel().sendMessage("You just fed servercat some " + msg "! :cat:").queue();
+        else if(ran%3 == 1)
+            event.getChannel().sendMessage(event.getMessage().getAuthor().getName() + ", you know that servercat only wants to eat freshly peeled bread >:(").queue();
+        else
+            event.getChannel().sendMessage(event.getMessage().getAuthor().getName() + ", you horrible monster! servercat is allergic to " + msg).queue();
+    }
+    private void molest(MessageReceivedEvent event)
+    {
+        event.getChannel().sendMessage("servercat just got a restraining order against" event.getMessage().getAuthor().getName()+". You are now banned from interacting with servercat.").queue();
+        catban.put(event.getMember().getUser(),true);
+    }
+    private void petcat(MessageReceivedEvent event)
+    {
+        if(catban.containsKey(event.getAuthor()) && catban.get(event.getAuthor()) == true)
+            event.getChannel().sendMessage("You're not allowed to be within 15ft of servercat :rage:").queue();
+        event.getChannel().sendMessage("Yay! servercat just got petted!").queue();
+    }
+    private void unmolest(MessageReceivedEvent event)
+    {
+        event.getChannel().sendMessage(event.getMessage().getAuthor().getName()+"is now paroled").queue();
+        catban.set(event.getMember().getUser(),false);
     }
 
 }
