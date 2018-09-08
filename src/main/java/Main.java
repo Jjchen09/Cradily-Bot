@@ -291,7 +291,7 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage("Registered cat molesters are not allowed to feed servercat :rage:").queue();
         int ran = (int) (Math.random()*50+1);
         if(ran%3 == 0)
-            event.getChannel().sendMessage("You just fed servercat some " + msg "! :cat:").queue();
+            event.getChannel().sendMessage("You just fed servercat some " + msg + "! :cat:").queue();
         else if(ran%3 == 1)
             event.getChannel().sendMessage(event.getMessage().getAuthor().getName() + ", you know that servercat only wants to eat freshly peeled bread >:(").queue();
         else
