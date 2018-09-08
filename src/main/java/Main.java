@@ -288,7 +288,10 @@ public class Main extends ListenerAdapter {
     private void feedcat (MessageReceivedEvent event, String msg)
     {
         if(catban.containsKey(event.getAuthor()) && catban.get(event.getAuthor()) == true)
+        {
             event.getChannel().sendMessage("Registered cat molesters are not allowed to feed servercat :rage:").queue();
+            return;
+        }
         int ran = (int) (Math.random()*50+1);
         if(ran%3 == 0)
             event.getChannel().sendMessage("You just fed servercat some " + msg + "! :cat:").queue();
@@ -299,14 +302,15 @@ public class Main extends ListenerAdapter {
     }
     private void molest(MessageReceivedEvent event)
     {
-        event.getChannel().sendMessage("servercat just got a restraining order against" + event.getMessage().getAuthor().getName()+". You are now banned from interacting with servercat.").queue();
+        event.getChannel().sendMessage("servercat just got a restraining order against " + event.getMessage().getAuthor().getName()+". You are now banned from interacting with servercat.").queue();
         catban.put(event.getMember().getUser(),true);
     }
     private void petcat(MessageReceivedEvent event)
     {
         if(catban.containsKey(event.getAuthor()) && catban.get(event.getAuthor()) == true)
             event.getChannel().sendMessage("You're not allowed to be within 15ft of servercat :rage:").queue();
-        event.getChannel().sendMessage("Yay! servercat just got petted!").queue();
+        else
+            event.getChannel().sendMessage("Yay! servercat just got petted!").queue();
     }
     private void unmolest(MessageReceivedEvent event)
     {
