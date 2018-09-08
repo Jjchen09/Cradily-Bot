@@ -311,7 +311,7 @@ public class Main extends ListenerAdapter {
     private void unmolest(MessageReceivedEvent event)
     {
         event.getChannel().sendMessage(event.getMessage().getAuthor().getName()+"is now paroled").queue();
-        catban.set(event.getMember().getUser(),false);
+        catban.put(event.getMember().getUser(),false);
     }
 
 }
