@@ -299,7 +299,7 @@ public class Main extends ListenerAdapter {
     }
     private void molest(MessageReceivedEvent event)
     {
-        event.getChannel().sendMessage("servercat just got a restraining order against" event.getMessage().getAuthor().getName()+". You are now banned from interacting with servercat.").queue();
+        event.getChannel().sendMessage("servercat just got a restraining order against" + event.getMessage().getAuthor().getName()+". You are now banned from interacting with servercat.").queue();
         catban.put(event.getMember().getUser(),true);
     }
     private void petcat(MessageReceivedEvent event)
