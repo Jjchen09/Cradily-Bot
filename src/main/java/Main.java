@@ -56,8 +56,6 @@ public class Main extends ListenerAdapter {
 //             event.getChannel().sendMessage("Mashing Potatoes").queue();
         else if (message.substring(0, 7).equals("c!8ball"))
             shake(event, message.substring(8));
-        else if (message.substring(0, 8).equals("c!gaydar"))
-            gaydar(event, message.substring(9));
         else if (message.substring(0, 8).equals("c!expand"))
             expand(event, message.substring(9));
         else if (message.substring(0, 7).equals("c!ascii"))
@@ -74,12 +72,8 @@ public class Main extends ListenerAdapter {
             viewcat(event);
         else if (message.startsWith("c!feedcat"))
             feedcat(event,message.substring(10));
-        else if (message.startsWith("c!molest"))
-            molest(event);
         else if (message.startsWith("c!petcat"))
             petcat(event);
-        else if (message.startsWith("c!unmolest"))
-            unmolest(event);
     }
 
     private void help(MessageReceivedEvent event) {
@@ -91,7 +85,6 @@ public class Main extends ListenerAdapter {
                                             "\t(Optional parameter -h deletes original command)\n" +
                                             "c!8ball - Magic 8Ball\n" +
                                             "c!ascii - Display the message as ASCII art\n" +
-                                            "c!gaydar - Self-explanatory\n" +
                                             "c!expand - E x p a n d s input\n" +
                                             "c!whoami - Returns the author\n" +
                                             "c!mock <users> - Enable mocking of users\n" +
@@ -100,7 +93,6 @@ public class Main extends ListenerAdapter {
                                             "c!rancap - rAndOmLy cApiTaLizEs yOuR mEsSagE\n" +
                                             "c!servercat / c!sc - View servercat (coot)\n" +
                                             "c!feedcat <food>- Feeds servercat\n" +
-                                            "c!molest - Molests servercat\n" +
                                             "c!petcat - Pets servercat\n" +
                                             "c!shutdown - Shutdown this bot\n" +
                                             "```").queue();
@@ -178,31 +170,7 @@ public class Main extends ListenerAdapter {
         //optionally implement randomness
         return temp;
     }
-    private void gaydar(MessageReceivedEvent event, String question)
-    {
-        int ran = hasher(question);
-        String response = "";
-        if(ran == 112 || ran == 57)
-            response = "PotatoCurry x Cradily";
-        else if(ran == 99)
-            response = event.getMessage().getAuthor().getName() + " is quite gay";
-        else if(ran > 120)
-            response = "100% gay";
-        else if(ran > 100)
-            response = "No gay found";
-        else if(ran > 80)
-            response = "A slight whiff of rainbow dust";
-        else if(ran > 60)
-            response = "As straight as a rainbow";
-        else if(ran > 40)
-            response = "Error: Gayness overflow";
-        else if(ran > 20)
-            response = "75% gay";
-        else
-            response = "Too lonely to be gay :sob:";
-        event.getChannel().sendMessage("How gay is " + question + "?\n" +
-                                       ":satellite: " + response + " :gay_pride_flag:").queue();
-}
+    
 
     private void expand(MessageReceivedEvent event, String str)
     {
@@ -300,22 +268,12 @@ public class Main extends ListenerAdapter {
         else
             event.getChannel().sendMessage(event.getMessage().getAuthor().getName() + ", you horrible monster! servercat is allergic to " + msg).queue();
     }
-    private void molest(MessageReceivedEvent event)
-    {
-        event.getChannel().sendMessage("servercat just got a restraining order against " + event.getMessage().getAuthor().getName()+". You are now banned from interacting with servercat.").queue();
-        catban.put(event.getMember().getUser(),true);
-    }
     private void petcat(MessageReceivedEvent event)
     {
         if(catban.containsKey(event.getAuthor()) && catban.get(event.getAuthor()) == true)
             event.getChannel().sendMessage("You're not allowed to be within 15ft of servercat :rage:").queue();
         else
             event.getChannel().sendMessage("Yay! servercat just got petted!").queue();
-    }
-    private void unmolest(MessageReceivedEvent event)
-    {
-        event.getChannel().sendMessage(event.getMessage().getAuthor().getName()+"is now paroled").queue();
-        catban.put(event.getMember().getUser(),false);
     }
 
 }
