@@ -275,5 +275,5 @@ public class Main extends ListenerAdapter {
         else
             event.getChannel().sendMessage("Yay! servercat just got petted!").queue();
     }
-
+    //add in images
 }
