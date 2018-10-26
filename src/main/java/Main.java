@@ -43,7 +43,7 @@ public class Main extends ListenerAdapter {
         else if (message.substring(0, 6).equals("c!echo"))
             echo(event);
         else if (message.equals("c!cradily"))
-            event.getChannel().sendMessage("fuck off").queue();
+            event.getChannel().sendMessage("cradamian").queue();
         else if (message.equals("c!whiscash"))
             event.getChannel().sendMessage(":yum:").queue();
         else if (message.equals("c!dogmeat"))
@@ -249,7 +249,7 @@ public class Main extends ListenerAdapter {
     }
     private void viewcat(MessageReceivedEvent event)
     {
-        event.getChannel().sendMessage("how to send pictures D:").queue();
+        event.getChannel().sendMessage(":servercat:").queue();
         event.getChannel().sendMessage("adding happiness bar later").queue();
         event.getChannel().sendMessage("adding hungry bar later").queue();
     }
@@ -257,12 +257,12 @@ public class Main extends ListenerAdapter {
     {
         if(catban.containsKey(event.getAuthor()) && catban.get(event.getAuthor()) == true)
         {
-            event.getChannel().sendMessage("Registered cat molesters are not allowed to feed servercat :rage:").queue();
+            event.getChannel().sendMessage("You're are not allowed to feed servercat :rage:").queue();
             return;
         }
         int ran = (int) (Math.random()*50+1);
         if(ran%3 == 0)
-            event.getChannel().sendMessage("You just fed servercat some " + msg + "! :cat:").queue();
+            event.getChannel().sendMessage("You just fed servercat some " + msg + "! :servercat:").queue();
         else if(ran%3 == 1)
             event.getChannel().sendMessage(event.getMessage().getAuthor().getName() + ", you know that servercat only wants to eat freshly peeled bread >:(").queue();
         else
