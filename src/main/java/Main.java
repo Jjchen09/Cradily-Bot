@@ -31,6 +31,8 @@ public class Main extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
 //         if (event.getAuthor().isBot() && message.equals("Mashing Potatoes"))
 //             mash(event);
+        if (event.getAuthor().isBot())
+             return;
         if(!event.getAuthor().getId().equals("475785719403642882") && !message.startsWith("c!") && mocked.containsKey(event.getAuthor()) && mocked.get(event.getAuthor()) == true)
 //             event.getChannel().sendMessage(message).queue();
                rancap(event,message);
