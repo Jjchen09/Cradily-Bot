@@ -76,6 +76,8 @@ public class Main extends ListenerAdapter {
             feedcat(event,message.substring(10));
         else if (message.startsWith("c!petcat"))
             petcat(event);
+        else if (message.startsWith("c!number"))
+            number(event,message.substring(9));
     }
 
     private void help(MessageReceivedEvent event) {
@@ -278,4 +280,22 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage("Yay! servercat just got petted!").queue();
     }
     //add in images
+    
+    private void number(MessageReceivedEvent event, String str)
+    {
+        int num = Integer.valueOf(str);
+        boolean nice = true;
+        if(num % 2 != 0)
+            nice = false;
+        if(str.indexOf("0") < 0)
+            nice = false;
+        if(num % 5 == 0)
+            nice = true;
+        if(num / 100 == 10 && (num % 100) % 11 != 0)
+            nice = true;
+        if(nice)
+            event.getChannel().sendMessage(str + " is a nice number! :D ").queue();
+        else
+            event.getChannel().sendMessage(str + " is nasty number :nauseated_face:").queue();
+    }
 }
