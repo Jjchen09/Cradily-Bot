@@ -294,7 +294,7 @@ public class Main extends ListenerAdapter {
         if(num / 100 == 10 && (num % 100) % 11 != 0)
             nice = true;
         if(nice)
-            event.getChannel().sendMessage(str + " is a nice number! :D ").queue();
+            event.getChannel().sendMessage(str + " is a nice number! :smile: ").queue();
         else
             event.getChannel().sendMessage(str + " is nasty number :nauseated_face:").queue();
     }
