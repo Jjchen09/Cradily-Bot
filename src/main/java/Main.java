@@ -216,7 +216,7 @@ public class Main extends ListenerAdapter {
     }
     private void unmock(MessageReceivedEvent event)
     {
-        if(hasRole(event.getMember(),"Cradily Master") == false)
+        if(hasRole(event.getMember(),"Cradily Master") == true)
         {
             event.getChannel().sendMessage("You need the role *Cradily Master* to do this action!").queue();
             return;
