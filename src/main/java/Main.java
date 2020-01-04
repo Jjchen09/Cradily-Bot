@@ -218,9 +218,15 @@ public class Main extends ListenerAdapter {
     {
         if(hasRole(event.getMember(),"Cradily Master") == true)
         {
-            event.getChannel().sendMessage("You need the role *Cradily Master* to do this action!").queue();
+            event.getChannel().sendMessage("The role *Cradily Master* means you're too gay to do this action!").queue();
             return;
         }
+         if(usr.getId().equals("Souichri"))
+            {
+                event.getChannel().sendMessage(usr.getId()+" is superior").queue();
+                continue;
+            }
+                   
         Message msg = event.getMessage();
         for(User usr: msg.getMentionedUsers())
         {
